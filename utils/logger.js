@@ -1,20 +1,8 @@
-function info(filename, message) {
-  console.log(`${filename} : ${message}`);
-}
-
-function warn(filename, message) {
-  console.log(`${filename} : ${message}`);
-}
-
-function error(filename, message) {
-  console.log(`${filename} : ${message}`);
-}
-
-function logger(filename) {
+function logger(moduleName) {
   return {
-    info: (message) => info(filename, message),
-    warn: (message) => warn(filename, message),
-    error: (message) => error(filename, message),
+    info: (...args) => console.log(`${moduleName}:`, ...args),
+    warn: (...args) => console.warn(`${moduleName}:`, ...args),
+    error: (...args) => console.error(`${moduleName}:`, ...args),
   };
 }
 
