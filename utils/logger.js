@@ -1,27 +1,28 @@
-const { bgGreen, bgYellow, bgRed } = require('colors/safe');
+const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
 const { LEVEL_TYPES } = require('../constants');
 const checkColor = require('../helpers/checkLogColors');
 const config = require('config');
 
 function logger(moduleName) {
-  const colorIsActive = !!+config.colorIsEnable;
+  const { colorIsEnable, logLevel } = config;
 
-  const warn = config.logLevel === LEVEL_TYPES.WARN;
-  const info = config.logLevel === LEVEL_TYPES.INFO;
+  const isWarnLevel = logLevel === LEVEL_TYPES.WARN;
+  const isInfoLevel = logLevel === LEVEL_TYPES.INFO;
 
+  colorIsEnable ? enable() : disable();
   return {
     info: (...args) => {
-      if (info) {
-        console.log(checkColor(colorIsActive, bgGreen, moduleName), ...args);
+      if (isInfoLevel) {
+        console.log(bgGreen(`${moduleName}:`), ...args);
       }
     },
     warn: (...args) => {
-      if (warn || info) {
-        console.warn(checkColor(colorIsActive, bgYellow, moduleName), ...args);
+      if (isWarnLevel || isInfoLevel) {
+        console.warn(bgYellow(`${moduleName}:`), ...args);
       }
     },
     error: (...args) => {
-      console.error(checkColor(colorIsActive, bgRed, moduleName), ...args);
+      console.error(bgRed(`${moduleName}:`), ...args);
     },
   };
 }
