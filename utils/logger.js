@@ -1,6 +1,5 @@
 const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
 const { LEVEL_TYPES } = require('../constants');
-const checkColor = require('../helpers/checkLogColors');
 const config = require('config');
 
 function logger(moduleName) {
