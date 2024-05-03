@@ -135,3 +135,6 @@ source/*
 
 target/*
 !target/.gitkeep
+
+logs/*
+!logs/.gitkeep
