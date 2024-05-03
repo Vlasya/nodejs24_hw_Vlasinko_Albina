@@ -1,8 +1,8 @@
-const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
-const { LEVEL_TYPES } = require('../constants');
-const config = require('config');
 const path = require('path');
 const fs = require('fs');
+const config = require('config');
+const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
+const { LEVEL_TYPES } = require('../constants');
 
 const getMessageWithDateTime = (moduleName, ...args) => {
   const timestamp = new Date().toISOString();
