@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const getMessageWithDateTime = (moduleName, ...args) => {
   const timestamp = new Date().toISOString();
-  return `${timestamp} - ${moduleName}: ${args.join(' ')}\n`;
+  return `${timestamp} - ${moduleName}: ${args.join(' ')}`;
 };
 
 const { colorIsEnable, logLevel } = config;
@@ -27,10 +27,10 @@ try {
   }
 
   logStreams.info = fs.createWriteStream(`${logDirectory}/info.log`, {
-    flags: 'a',
+    flags: 'a+',
   });
   logStreams.error = fs.createWriteStream(`${logDirectory}/error.log`, {
-    flags: 'a',
+    flags: 'a+',
   });
 } catch (error) {
   console.error('Error creating log streams:', error);
