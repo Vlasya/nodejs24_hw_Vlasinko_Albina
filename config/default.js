@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const { COLORS_TYPES, LEVEL_TYPES } = require('../constants');
+const { COLORS_TYPES, LEVEL_TYPES } = require('../constants/logger');
 
 
 dotenv.config();

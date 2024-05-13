@@ -15,7 +15,7 @@ const fileExists = async (filePath) => {
   }
 };
 
-const copyFile = async (sourcePath, targetPath) => {
+const copyFile = async (sourcePath = 'source', targetPath = 'target') => {
   fileExists(targetPath).then((exists) => {
     if (exists) {
       logger.warn(`${targetPath} існує`);
@@ -60,6 +60,10 @@ const start = async () => {
 
   await syncDirectories(sourceDir, targetDir);
 };
+
+if (require.main === module) {
+  start();
+}
 
 module.exports = {
   start,

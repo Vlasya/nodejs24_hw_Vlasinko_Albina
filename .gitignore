@@ -138,3 +138,8 @@ target/*
 
 logs/*
 !logs/.gitkeep
+
+static/*
+!static/.gitkeep
+
+.vscode/
