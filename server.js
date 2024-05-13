@@ -19,7 +19,6 @@ server.on('request', (req, resp) => {
     resp.writeHead(200, { 'Content-Type': 'text/plain' });
     logger.info(`${req.method} ${req.url} 200`);
     resp.end('healthcheck passed');
-    resp.wr;
     return;
   }
 
