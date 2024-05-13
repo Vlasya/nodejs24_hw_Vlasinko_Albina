@@ -2,11 +2,11 @@ const path = require('path');
 const fs = require('fs');
 const config = require('config');
 const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
-const { LEVEL_TYPES } = require('../constants');
+const { LEVEL_TYPES } = require('../constants/logger');
 
 const getMessageWithDateTime = (moduleName, ...args) => {
   const timestamp = new Date().toISOString();
-  return `${timestamp} - ${moduleName}: ${args.join(' ')}`;
+  return `${timestamp} - ${moduleName}: ${args.join(' ')}\n`;
 };
 
 const { colorIsEnable, logLevel } = config;

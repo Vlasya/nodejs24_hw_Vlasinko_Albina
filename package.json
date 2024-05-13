@@ -8,7 +8,9 @@
     "start": "node ./main.js",
     "start:debug": "node --inspect-brk ./file_sync.js",
     "start:dev": "nodemon ./main.js",
-    "filesync:dev": "nodemon ./file_sync.js"
+    "filesync:dev": "nodemon ./file_sync.js",
+    "server:dev": "nodemon --inspect ./server.js"
+
   },
   "keywords": [],
   "author": "",
