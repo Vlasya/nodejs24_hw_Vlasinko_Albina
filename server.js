@@ -2,15 +2,14 @@ const http = require('http');
 const { ENDPOINTS, METHODS } = require('./constants/api');
 
 const logger = require('./utils/logger')('server');
+const { server: serverConfig } = require('config');
 
-const PORT = 3000;
+const PORT = serverConfig.port;
 
 const server = http.createServer();
-server.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-
 
 server.on('request', (req, resp) => {
   const { method, url } = req;

@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const config = require('config');
+const { logger: loggerConfig } = require('config');
 const { bgGreen, bgYellow, bgRed, enable, disable } = require('colors/safe');
 const { LEVEL_TYPES } = require('../constants/logger');
 
@@ -9,7 +9,7 @@ const getMessageWithDateTime = (moduleName, ...args) => {
   return `${timestamp} - ${moduleName}: ${args.join(' ')}\n`;
 };
 
-const { colorIsEnable, logLevel } = config;
+const { colorIsEnable, logLevel } = loggerConfig;
 
 const isWarnLevel = logLevel === LEVEL_TYPES.WARN;
 const isInfoLevel = logLevel === LEVEL_TYPES.INFO;

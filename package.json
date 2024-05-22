@@ -9,8 +9,8 @@
     "start:debug": "node --inspect-brk ./file_sync.js",
     "start:dev": "nodemon ./main.js",
     "filesync:dev": "nodemon ./file_sync.js",
-    "server:dev": "nodemon --inspect ./server.js"
-
+    "server:dev": "nodemon --inspect ./server.js",
+    "server:express:dev": "nodemon --inspect ./server_express.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,11 @@
   "dependencies": {
     "colors": "^1.4.0",
     "config": "^3.3.11",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "rotating-file-stream": "^3.2.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
