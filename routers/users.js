@@ -1,22 +1,38 @@
 const { Router } = require('express');
+const userController = require('../controllers/users_controller');
 const { userValidator, userIdValidator } = require('../middlewares/validators');
+
+function notFoundErrorHandler(err, _req, resp, _next) {
+  resp.status(404).json({ error: err.message });
+}
 
 const userRouter = Router();
 
-userRouter.get('/', (_req, resp) => {
-  resp.status(200).send([]);
-});
+// get list of users
+userRouter.get('/', userController.getAllUsers);
 
-userRouter.get('/:userId', userIdValidator, (req, resp) => {
-  resp.json({ userId: req.params.userId });
-});
+//get user by ID
+userRouter.get(
+  '/:userId',
+  userIdValidator,
+  userController.getUserById,
+  notFoundErrorHandler
+);
 
-userRouter.post('/', userValidator, (req, resp) => {
-  resp.status(201).json(req.body);
-});
+//add new user
+userRouter.post('/', userValidator, userController.addNewUser);
 
-userRouter.delete('/:userId', userIdValidator, (req, resp) => {
-  resp.status(400).send();
+//delete user by ID
+userRouter.delete(
+  '/:userId',
+  userIdValidator,
+  userController.deleteUserById,
+  notFoundErrorHandler
+);
+
+// this works for ALL not existing above
+userRouter.use((_req, resp) => {
+  resp.status(404).send();
 });
 
 module.exports = {
