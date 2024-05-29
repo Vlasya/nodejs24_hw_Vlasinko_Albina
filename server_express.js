@@ -8,6 +8,7 @@ const logger = require('./utils/logger')('server_express');
 
 const { server: serverConfig } = require('config');
 const { userRouter } = require('./routers/users');
+const { pagesRouter } = require('./routers/pages');
 
 const app = express();
 
@@ -34,12 +35,9 @@ app.use(express.static('static'));
 const jsonBodyParser = express.json();
 app.use(jsonBodyParser);
 
+app.use('/', pagesRouter);
 app.use('/users', cors(), userRouter);
 
 app.get('/health-check', (_req, resp) => {
   resp.send('Healthcheck passed');
-});
-
-app.get('/pug', (req, resp) => {
-  resp.render('index');
 });

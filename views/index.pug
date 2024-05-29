@@ -1,13 +1,16 @@
-html 
-    head
-        title User List 
-        link(href='/favicon.ico' rel='icon' type='image/x-icon') 
-        link(href="/styles.css" rel="stylesheet")
-    body
-        .navbar 
-            a(href='/') Home Page 
-            h3 The user list available to watch online
-        #root   
-            table.mainTable 
+extends layout 
+
+block headContent 
+
+block content
+   #root   
+        table.mainTable 
             thead 
+                 each headerItem in ["ID", "Username", "Email"]
+                    th(class=headerItem.toLowerCase())= headerItem
             tbody
+                each userItem in locals.userList
+                    tr
+                        td=userItem.id 
+                        td=userItem.username
+                        td=userItem.email 

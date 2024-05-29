@@ -27,7 +27,10 @@ const userIdSchema = yup
 
 const userValidator = async (req, resp, next) => {
   try {
-    await userValidationSchema.validate(req.body, { abortEarly: false });
+    const parsedBody = await userValidationSchema.validate(req.body, {
+      abortEarly: false,
+    });
+    req.body = parsedBody;
     next();
   } catch (err) {
     const errors = err.inner.reduce((acc, curr) => {
