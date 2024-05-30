@@ -1,0 +1,12 @@
+extends layout 
+
+block headContent 
+
+block content
+    form(method='POST')
+        .group 
+            label(for='username') Username 
+            input(type="text" name='username' placeholder= "Enter Username" required)
+            label(for='email') Email 
+            input(type="text" name='email' placeholder= "Enter Email" required)
+        button(type= "submit")  Add new User

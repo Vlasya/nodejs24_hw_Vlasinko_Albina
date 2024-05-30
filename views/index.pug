@@ -1,0 +1,16 @@
+extends layout 
+
+block headContent 
+
+block content
+   #root   
+        table.mainTable 
+            thead 
+                 each headerItem in ["ID", "Username", "Email"]
+                    th(class=headerItem.toLowerCase())= headerItem
+            tbody
+                each userItem in locals.userList
+                    tr
+                        td=userItem.id 
+                        td=userItem.username
+                        td=userItem.email 
